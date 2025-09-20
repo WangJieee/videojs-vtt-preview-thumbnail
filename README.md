@@ -1,0 +1,1 @@
+# videojs-vtt-preview-thumbnail
