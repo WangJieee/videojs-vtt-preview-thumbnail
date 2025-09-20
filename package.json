@@ -1,10 +1,9 @@
 {
   "name": "videojs-vtt-preview-thumbnail",
   "version": "1.0.0",
-  "description": "Preview thumbnails displayed over progress bar on hover",
-  "main": "index.js",
+  "description": "A video.js plugin to display preview thumbnails over progress bar on hover",
+  "main": "dist/bundle.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack serve --open",
     "build": "webpack --mode production"
   },
