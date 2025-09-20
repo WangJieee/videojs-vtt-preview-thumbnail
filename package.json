@@ -1,6 +1,6 @@
 {
   "name": "videojs-vtt-preview-thumbnail",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A video.js plugin to display preview thumbnails over progress bar on hover",
   "main": "dist/bundle.js",
   "scripts": {
@@ -12,8 +12,8 @@
   ],
   "author": "Wang Jie",
   "license": "MIT",
-  "dependencies": {
-    "video.js": "^8.23.4"
+  "peerDependencies": {
+    "video.js": "^7 || ^8"
   },
   "devDependencies": {
     "babel-loader": "^10.0.0",
