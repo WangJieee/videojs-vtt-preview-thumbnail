@@ -70,10 +70,15 @@ class VttPreviewThumbnail extends Plugin {
     this.timestampLabel = document.createElement('div')
     this.timestampLabel.setAttribute('class', 'vjs-vtt-thumbnail-timestamp')
     this.thumbHolder.appendChild(this.timestampLabel)
-    this.progressBar = this.player.controlBar.progressControl.el()
+    this.progressBar = this.player.$('.vjs-progress-control')
+    if (!this.progressBar) return
+  
     this.progressBar.appendChild(this.thumbHolder)
     // hide default time tooltip
-    this.player.controlBar.progressControl.seekBar.mouseTimeDisplay.addClass('vjs-hidden')
+    const defaultTimeTooltip = this.player.$('.vjs-mouse-display')
+    if (defaultTimeTooltip) {
+      defaultTimeTooltip.classList.add('vjs-hidden')
+    }
 
     this.progressBar.addEventListener('mouseenter', this.onProgressBarMouseEnter)
     this.progressBar.addEventListener('mouseleave', this.onProgressBarMouseLeave)

@@ -7,8 +7,9 @@ module.exports = {
     mode: 'development',
 		devtool: "inline-source-map",
     entry: path.resolve(__dirname, 'src') + '/plugin.js',
+		externalsType: 'commonjs',
 		externals: {
-			'video.js': 'videojs'
+			'video.js': 'video.js'
 		},
 		resolve: {
 			extensions: ['.js'],
