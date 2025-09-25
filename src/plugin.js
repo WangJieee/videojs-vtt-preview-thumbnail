@@ -12,6 +12,8 @@ class VttPreviewThumbnail extends Plugin {
       this.vttSrc = options.vttSrc
       this.getVttData()
       this.createThumbnailPreview()
+    } else {
+      console.error('No source file exists!')
     }
 
   }
@@ -45,14 +47,16 @@ class VttPreviewThumbnail extends Plugin {
           const matchXYWH = imageUrl.match(/#xywh=(\d+),(\d+),(\d+),(\d+)/);
           if (matchXYWH) {
             const [, x, y, width, height] = matchXYWH
-            const css = {}
-            css.backgroundImage = `url(${imageUrl.split('#')[0]})`
-            css.backgroundPosition = `-${x}px -${y}px`
-            css.width = `${width}px`
-            css.height = `${height}px`
+            const css = {
+              backgroundImage: `url(${imageUrl.split('#')[0]})`,
+              backgroundPosition:`-${x}px -${y}px`,
+              width: `${width}px`,
+              height: `${height}px`
+            }
             cues.push({ start, end, css })
           }
-          
+        } else {
+          console.error('malformated time code: ', line)
         }
       }
       i++
@@ -68,6 +72,7 @@ class VttPreviewThumbnail extends Plugin {
     this.thumbHolder.appendChild(this.timestampLabel)
     this.progressBar = this.player.controlBar.progressControl.el()
     this.progressBar.appendChild(this.thumbHolder)
+    // hide default time tooltip
     this.player.controlBar.progressControl.seekBar.mouseTimeDisplay.addClass('vjs-hidden')
 
     this.progressBar.addEventListener('mouseenter', this.onProgressBarMouseEnter)
